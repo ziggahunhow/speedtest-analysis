@@ -5,12 +5,23 @@ Runs on a cron schedule (default every 30 min), appends results to a CSV, and re
 
 ## Requirements
 
-- **macOS** (uses `open` to launch the browser)
-- **`speedtest`** (Ookla CLI) — install with:
-  ```bash
-  brew install speedtest
-  ```
-- **Python 3** — pre-installed on macOS
+- **macOS** or **Linux (Ubuntu)**
+- **`speedtest`** (Ookla CLI):
+  - **macOS:**
+    ```bash
+    brew install speedtest
+    ```
+  - **Ubuntu (jammy / 22.04):** follow [Ookla's apt install guide](https://www.speedtest.net/apps/cli), then:
+    ```bash
+    sudo apt install speedtest
+    ```
+  - **Ubuntu noble (24.04):** Ookla's repo doesn't publish noble packages yet. After adding the repo per the guide above, patch the sources list to fall back to jammy, then install:
+    ```bash
+    sudo sed -i 's/noble/jammy/g' /etc/apt/sources.list.d/ookla_speedtest-cli.list
+    sudo apt update
+    sudo apt install speedtest
+    ```
+- **Python 3** — pre-installed on macOS; `sudo apt install python3` on Ubuntu
 
 ---
 

@@ -63,9 +63,17 @@ Error rows have `ERROR` in server_name and a message in result_url.
 
 ## Requirements
 
-- macOS
-- `speedtest` (Ookla) — `brew install speedtest`
-- Python 3 (pre-installed on macOS)
+- macOS **or** Linux (Ubuntu)
+- `speedtest` (Ookla CLI):
+  - **macOS:** `brew install speedtest`
+  - **Ubuntu (jammy / 22.04):** follow [Ookla's apt install guide](https://www.speedtest.net/apps/cli), then `sudo apt install speedtest`
+  - **Ubuntu noble (24.04):** Ookla's repo doesn't publish noble packages yet — after adding the repo, patch the sources list to use jammy and then install:
+    ```bash
+    sudo sed -i 's/noble/jammy/g' /etc/apt/sources.list.d/ookla_speedtest-cli.list
+    sudo apt update
+    sudo apt install speedtest
+    ```
+- Python 3 (pre-installed on macOS; `sudo apt install python3` on Ubuntu)
 
 ## First-time setup
 
