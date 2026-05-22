@@ -9,7 +9,7 @@ Usage:
     python3 speedtest-viz.py --no-open        # generate HTML but don't open browser
 """
 
-import sys, os, csv, json, argparse, subprocess, tempfile
+import sys, os, csv, json, argparse, subprocess, webbrowser
 from datetime import datetime, timezone
 
 # ── args ──────────────────────────────────────────────────────────────────────
@@ -285,4 +285,8 @@ with open(out_file, "w") as f:
 print(f"Chart written → {out_file}")
 
 if not args.no_open:
-    subprocess.run(["open", out_file])
+    url = f"file://{os.path.abspath(out_file)}"
+    opened = webbrowser.open(url)
+    if not opened:
+        print(f"Could not open browser automatically (no display?).")
+        print(f"Open this file in your browser:\n  {url}")
